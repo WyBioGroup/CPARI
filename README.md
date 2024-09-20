@@ -1,13 +1,10 @@
-## 1. About the manuscript
-- The ylabel in Figure 7 is incorrect, it should be corrected to match the one in the updated `Figure7.png`. The specific values are still detailed in the supplementary file.
-
-## 2. Introduction
+## 1. Introduction
 
 A Novel Approach Combining Cell Partitioning with Absolute and Relative Imputation to Address Dropout in Single-Cell RNA-seq Data
 
-## 3. Run(Please place the entire project in "D:\CPARI\")
+## 2. Run(Please place the entire project in "D:\CPARI\")
 
-### 3.1:&nbsp;&nbsp;Step 1: Cell Partitioning (Please run `D:\CPARI\cell partitioning\CPARI.mlx`)
+### 2.1:&nbsp;&nbsp;Step 1: Cell Partitioning (Please run `D:\CPARI\cell partitioning\CPARI.mlx`)
 
 The first step is cell partitioning. Please run the MATLAB file CPARI.mlx, which contains detailed execution steps.
 Please note that in the Ledein_SNN function, Rscript = 'D:\R\R-4.3.1\bin\Rscript.exe' specifies the path to your R installation. If the operation is successful, there will be a "grout.txt" file in the D:\CPARI\.
@@ -44,7 +41,7 @@ system_used = 'Mac';
 accelerate = 1;%0--------0.9982
 label = [];
 [group,coph] = partitioning(iniData,M0,K,numCores,system_used,accelerate,label); -->
-### 3.2:&nbsp;&nbsp;step2: imputation (Please run `D:\CPARI\imputation\test.py`)
+### 2.2:&nbsp;&nbsp;step2: imputation (Please run `D:\CPARI\imputation\test.py`)
 The second step is data imputation, specifically including our novel absolute imputation and novel relative imputation. For detailed execution processes, please refer to "test.py".
 Para = [256, 1e-4, 100]
 model_para = [1000, 1000, 4000]
@@ -68,7 +65,7 @@ if __name__ == "__main__":
     for script in scripts:
         run_script(script)
 -->
-## 4. Comparative Models
+## 3. Comparative Models
 The following models and methods are referenced:
 
 - **ALRA**: [Nature Communications](https://www.nature.com/articles/s41467-021-27729-z)
@@ -79,19 +76,19 @@ The following models and methods are referenced:
 - **scRecover**: [BioRxiv](https://www.biorxiv.org/content/10.1101/665323v1.abstract)
 - **MAGIC**: [Cell](https://www.cell.com/cell/fulltext/S0092-8674(18)30724-4)
 - **DeepImpute**: [Genome Biology](https://link.springer.com/article/10.1186/s13059-019-1837-6)
-- **GE-Impute**: [Bioinformatics](https://academic.oup.com/bib/article/23/5/bbac313/6651303?login=false)
+- **GE-Impute**: [Briefings in Bioinformatics](https://academic.oup.com/bib/article/23/5/bbac313/6651303?login=false)
 - **DCA**: [Nature Communications](https://www.nature.com/articles/s41467-018-07931-2)
 - **CL-Impute**: [Journal of Computational Biology](https://www.sciencedirect.com/science/article/abs/pii/S001048252300728X)
 - **TsImpute**: [Bioinformatics](https://academic.oup.com/bioinformatics/article/39/12/btad731/7457483)
 
-## 5. Data availability
-### 5.1 Real dataset
+## 4. Data availability
+### 4.1 Real dataset
 The datasets were derived from publicly available sources: 
 - The PBMC datasets from [10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/datasets/2.1.0/pbmc4k),
 - The worm neuron cells from [Cole Trapnell Lab](https://cole-trapnell-lab.github.io/worm-rna/docs/),
 - The LPS datasets from [NCBI GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE17721),
 - The mouse bladder cells from [Figshare](https://figshare.com/s/865e694ad06d5857db4b).
-### 5.2 Simulate dataset
+### 4.2 Simulate dataset
 The simulated datasets come from: [Bubble](https://academic.oup.com/bib/article/24/1/bbac580/6960616) and [Splatter](https://link.springer.com/article/10.1186/s13059-017-1305-0).  
 Since Bubble is constrained by bulk RNA-seq data and introduces other datasets, we will not compare the Bubble method here.
 - **Dataset 1**, **Dataset 2**, **Dataset 3**:

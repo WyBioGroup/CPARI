@@ -4,7 +4,7 @@ A Novel Approach Combining Cell Partitioning with Absolute and Relative Imputati
 
 ## 2. Run(Please place the entire project in ".../CPARI/")
 For example:D:/CPARI/
-### 2.1:&nbsp;&nbsp;Step 1: Cell Partitioning (Please run `...CPARI/cell partitioning/CPARI.mlx`)
+### 2.1:&nbsp;&nbsp;Step 1: Cell Partitioning (Please run `.../CPARI/cell partitioning/CPARI.mlx`)
 
 The first step is cell partitioning. Please run the MATLAB file CPARI.mlx, which contains detailed execution steps.
 Please note that in the Ledein_SNN function, Rscript = 'D:\R\R-4.3.1\bin\Rscript.exe' specifies the path to your R installation. If the operation is successful, there will be a "grout.txt" file in the .../CPARI/.
@@ -41,7 +41,7 @@ system_used = 'Mac';
 accelerate = 1;%0--------0.9982
 label = [];
 [group,coph] = partitioning(iniData,M0,K,numCores,system_used,accelerate,label); -->
-### 2.2:&nbsp;&nbsp;step2: imputation (Please run `D:\CPARI\imputation\test.py`)
+### 2.2:&nbsp;&nbsp;step2: imputation (Please run `.../CPARI/imputation/test.py`)
 The second step is data imputation, specifically including our novel absolute imputation and novel relative imputation. For detailed execution processes, please refer to "test.py".
 Para = [256, 1e-4, 100]
 model_para = [1000, 1000, 4000]

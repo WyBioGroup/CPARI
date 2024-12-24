@@ -1,0 +1,81 @@
+args <- commandArgs()
+baseName <- "D:\\CPARI\\"
+if (!require("Seurat")) {
+  install.packages("Seurat", dependencies = TRUE, repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+}
+library(Seurat)
+library(dplyr)
+library(plyr)
+library(ggplot2)
+library(data.table)
+print("666666666666666666666")
+#sessionInfo()
+# 预处理
+data_file <- as.character(file.path(baseName, "selected_genes_expression_matrix.csv"))
+# data <- read.table(data_file, sep = '\t', header = TRUE)
+#data <- read.table(data_file,sep = '\t')
+
+counts_matrix <- read.table("D:\\CPARI\\selected_genes_expression_matrix.csv", sep = ',')
+print("666666666666666666666")
+print(dim(counts_matrix))
+
+
+#counts_matrix <- data[, -1]# 除了第一列
+#counts_matrix <- data[-1, ]
+w10x_new <- CreateSeuratObject(counts = counts_matrix, raw.data = data, min.cells = 3, min.genes = 200, project = "MUT")
+
+# 查看保留的细胞数
+print("查看保留的细胞数")
+print(ncol(w10x_new))
+
+print("Seurat预处理")
+print(length(VariableFeatures(w10x_new)))
+
+# 标准化数据
+#w10x_new <- NormalizeData(object = w10x_new, normalization.method = "LogNormalize", scale.factor = 10000)
+w10x_new <- FindVariableFeatures(object = w10x_new, mean.function = ExpMean, dispersion.function = LogVMR, x.low.cutoff = 0.01, x.high.cutoff = 5, y.cutoff = 0.01)
+#x.low.cutoff = 0.01: 这个参数设置了用于筛选低均值的基因的阈值。基因的平均表达量低于此阈值的将被排除。
+#x.high.cutoff = 5: 这个参数设置了用于筛选高均值的基因的阈值。基因的平均表达量高于此阈值的将被排除。
+#y.cutoff = 0.25: 这个参数设置了用于筛选低离散度（变异性）的基因的阈值。基因的离散度低于此阈值的将被排除。
+print("Seurat选取高度可变的基因") 
+print(length(VariableFeatures(w10x_new)))
+w10x_new <- ScaleData(object = w10x_new)
+# 假设你的 Seurat 对象名为 'w10x_new'
+# 计算PCA降维
+w10x_new <- RunPCA(w10x_new, pc.genes = w10x_new@var.genes, pcs.compute = 30, do.print = FALSE) 
+# 计算相似性图
+w10x_new <- FindNeighbors(w10x_new, dims = 1:30)
+
+# 定义要尝试的不同分辨率值
+res <- c(0.05,0.1,0.15,0.2,0.25)
+
+# 循环尝试不同的分辨率值
+for (i in 1:length(res)) {
+ w10x_new <- FindClusters(w10x_new, reduction.type = "pca",
+       print.output = 0,force.recalc = T,
+                           algorithm = 1, 
+                           n.start = 800,    # 设定不同初始化点的次数
+                           save.SNN = TRUE, resolution = res[i])  # 保存相似性矩阵
+ 
+  
+  # Visualize t-SNE results
+   #DimPlot(w10x_new, group.by = "seurat_clusters")
+
+  # Obtain clustering results
+  cluster_results <- data.frame(Cell = names(w10x_new@active.ident), Cluster = w10x_new@active.ident)
+ baseName <- "D:\\CPARI\\intermediateFiles\\"
+  # Write clustering results
+   out <- paste(baseName, paste("identity_clustering_res", res[i], ".txt", sep = ""), sep = "/")
+   write.table(w10x_new@active.ident, file = out, sep = '\t')
+
+  # Save t-SNE plot
+  #plot_filename <- paste(baseName, paste("tSNE_plot_res", res[i], ".jpg", sep = ""), sep = "/")
+  #ggsave(plot_filename, device = "jpg", width = 6, height = 6)  # 保存图形为 PNG 文件，可根据需要修改宽度和高度
+}
+
+  
+
+
+
+
+

@@ -7,7 +7,7 @@ A Novel Approach Combining Cell Partitioning with Absolute and Relative Imputati
 ### 2.1:&nbsp;&nbsp;Step 1: Cell Partitioning (Please run `..\CPARI\cell partitioning\CPARI.mlx`)
 
 The first step is cell partitioning. Please run the MATLAB file CPARI.mlx, which contains detailed execution steps.
-Please note that in the Ledein_SNN function, Rscript = 'D:\R\R-4.3.1\bin\Rscript.exe' specifies the path to your R installation. If the operation is successful, there will be a "grout.txt" file in the ..\CPARI\.
+Please note that in the Ledein_SNN function, Rscript = '...exe' specifies the path to your R installation. If the operation is successful, there will be a "grout.txt" file in the ..\CPARI\.
 
 <!-- 1.Import raw data
 addpath(genpath('./'))

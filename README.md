@@ -68,18 +68,18 @@ if __name__ == "__main__":
 ## 3. Comparative Models
 The following models and methods are referenced:
 
-- **ALRA**: [Nature Communications](https://www.nature.com/articles/s41467-021-27729-z)
-- **SAVER**: [Nature Methods](https://www.nature.com/articles/s41592-018-0033-z)
-- **scImpute**: [Nature Communications](https://www.nature.com/articles/s41467-018-03405-7)
-- **bayNorm**: [Bioinformatics](https://academic.oup.com/bioinformatics/article/36/4/1174/5581401)
-- **VIPER**: [Genome Biology](https://link.springer.com/article/10.1186/s13059-018-1575-1)
-- **scRecover**: [BioRxiv](https://www.biorxiv.org/content/10.1101/665323v1.abstract)
 - **MAGIC**: [Cell](https://www.cell.com/cell/fulltext/S0092-8674(18)30724-4)
+- **SAVER**: [Nature Methods](https://www.nature.com/articles/s41592-018-0033-z)
+- **ALRA**: [Nature Communications](https://www.nature.com/articles/s41467-021-27729-z)
+- **scImpute**: [Nature Communications](https://www.nature.com/articles/s41467-018-03405-7)
+- **DCA**: [Nature Communications](https://www.nature.com/articles/s41467-018-07931-2)
+- **VIPER**: [Genome Biology](https://link.springer.com/article/10.1186/s13059-018-1575-1)
 - **DeepImpute**: [Genome Biology](https://link.springer.com/article/10.1186/s13059-019-1837-6)
 - **GE-Impute**: [Briefings in Bioinformatics](https://academic.oup.com/bib/article/23/5/bbac313/6651303?login=false)
-- **DCA**: [Nature Communications](https://www.nature.com/articles/s41467-018-07931-2)
-- **CL-Impute**: [Journal of Computational Biology](https://www.sciencedirect.com/science/article/abs/pii/S001048252300728X)
+- **bayNorm**: [Bioinformatics](https://academic.oup.com/bioinformatics/article/36/4/1174/5581401)
 - **TsImpute**: [Bioinformatics](https://academic.oup.com/bioinformatics/article/39/12/btad731/7457483)
+- **CL-Impute**: [Journal of Computational Biology](https://www.sciencedirect.com/science/article/abs/pii/S001048252300728X)
+- **scRecover**: [BioRxiv](https://www.biorxiv.org/content/10.1101/665323v1.abstract)
 
 ## 4. Data availability
 ### 4.1 Real dataset
